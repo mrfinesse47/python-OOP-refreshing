@@ -16,28 +16,31 @@ class Item:
         return self.price * self.quantity
     
     def apply_discount(self):
-        # self.price = self.price * self.pay_rate  -- works as well
-        self.price = self.price + Item.pay_rate
+        self.price = self.price * self.pay_rate  # can over ride pay rate this way
+        #self.price = self.price * Item.pay_rate
 
 item1 = Item( "phone",100,100) # creates an instance if a class
 
 # print(item1.calculate_total_price(item1.price, item1.quantity))
 
-item2 = Item("wallet",1000,6) # creates an instance if a class
 
 # print(item2.calculate_total_price(item2.price, item2.quantity))
 
 # print(item1.calculate_total_price(), item2.calculate_total_price())
+item2 = Item("wallet",1000,6) # creates an instance if a class
+item2.pay_rate = 0.00001 # a major discount for item 2, does this on instance level 
 
-
-print(Item.pay_rate) # able to access with out object instance
-print(item1.pay_rate) # able to access with object instance
-print(item2.pay_rate) # able to access with object instance
+# print(Item.pay_rate) # able to access with out object instance
+# print(item1.pay_rate) # able to access with object instance
+# print(item2.pay_rate) # able to access with object instance
 
 # Python tries to bring the attribute from the class level first, if it doesn't see
 # it at class level it looks in instance level
 
-print(Item.__dict__) # returns all of the attributes of the class
+# print(Item.__dict__) # returns all of the attributes of the class
 
 item1.apply_discount()
 print(item1.price)
+
+item2.apply_discount()
+print(item2.price)
