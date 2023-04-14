@@ -54,3 +54,28 @@ class Item:
         return f'{self.__class__.__name__}("{self.name}", {self.price}, {self.quantity})'
 
 
+
+
+# Item.instanciate_from_csv()
+class Phone(Item):
+
+
+    def __init__(self,name:str,price:float,quantity=0,broken_phones=0):
+
+        # call to super to access parent
+        super().__init__(
+            name,price,quantity
+            )
+
+        assert broken_phones >= 0, f"broken phones {broken_phones} is not greater than 0!"
+
+        # assign to self object
+        self.broken_phones = broken_phones
+    
+
+
+phone1 = Phone("android",100,100,5) # creates an instance if a class
+
+phone2 = Phone("iphone",1000,6,0) # creates an instance if a class
+
+print(Item.all)

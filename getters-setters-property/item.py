@@ -10,7 +10,7 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than 0!"
 
         # assign to self object
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
@@ -46,18 +46,18 @@ class Item:
         else:
             return False
 
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
 
 
 
     def __repr__(self):# used to represent object, similar to str
-        return f'("{self.name}", {self.price}, {self.quantity})'
+        return f'{self.__class__.__name__}("{self.name}", {self.price}, {self.quantity})'
 
 
-
-
-Item.instanciate_from_csv()
-
-print(Item.is_integer(67))
-print(Item.is_integer(7))
-print(Item.is_integer("hi"))
